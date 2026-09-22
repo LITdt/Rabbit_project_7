@@ -297,7 +297,7 @@ text-align: center;
   width: 30px;
   height: 30px;
   border: none;
-  background-image: url('../images/carrot.png');
+  background-image: url('./carrot.png'); /*again, changed '../images/' to '.' because of different folder structure on VScode (hence the url) preventing a visible image on the github*/
   background-size:contain;
   background-position:center;
   background-repeat:no-repeat;
