@@ -286,7 +286,7 @@ text-align: center;
   width: 30px;
   height: 30px;
   border: none;
-  background:url('../images/carrot.png'); /*isn't workign*/
+  background:url('./carrot.png'); /*the '.' is actually '../images/' on VScode because of differing folder structures. single dot means start from this folder, '..' means go one folder up. */
   background-size:contain;
   background-position:center;
   background-repeat:no-repeat;
