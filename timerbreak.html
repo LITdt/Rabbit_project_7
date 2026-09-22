@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Break time!</title>
+        <link rel="stylesheet" href="timerbreak.css">
+    </head>
+
+    <body>
+        <header class="break-header">
+            <h1>~ Break Time ~</h1>
+            <a href="timerpage.html" class="home-button">timer homepage</a>
+            
+        </header>
+        <main class="break-page">
+        
+            <p id="breakdesc">
+                Well done! Time for a little break. <br>
+                 Go to task page and click complete if you managed to finish!
+            </p>
+
+
+            <!--Circular timer-->
+            <div class="break-circle" id="break-circle">
+                <div class="break-inside">
+                    <span id="break-timer">
+                        05:00
+                    </span>
+                    <small>Break</small>
+
+                </div>
+            </div>
+            
+            <!--Break Rabbit-->
+            <div class="happy-rabbit">
+                <!--ears-->
+                <div class="happy-ears left"></div>
+                <div class="happy-ears right"></div>
+
+                <!--head-->
+                <div class="happy-head">
+                    <div class="happy-eye left"></div>
+                    <div class="happy-eye right"></div>
+                    <div class="happy-nose"></div>
+                    <div class="happy-cheeks"></div>
+                </div>
+                <!--the bod-->
+                <div class="body"></div> <!--let it be known that I have given up on names-->
+                <!--feet-->
+                <div class="foot left"></div>
+                <div class="foot right"></div>
+                <!--arms-->
+                <div class="arm left"></div>
+                <div class="arm right"></div>
+                <div class="cookie">🍪</div>
+
+
+            </div>
+
+            <!--message-->
+            <p id="break-message">Your break has started. <br> Relax, go stretch and grab some water!</p>
+            <button id="skip-break">Skip break</button> <!--for the strange people who can go long stretches of studying.-->
+
+            <div id="night-popup" class="popup-overlay">
+                <div class="popup-content">
+                    <h1>Late Night Notice!</h1>
+                    <p>It is past 9:00 PM. Your rabbit is asleep! Please also get some rest! Resume studying at 6.30 AM or later.</p>
+                    <button id="close-popup">Dismiss</button>
+                </div>
+            </div>
+        </main>
+        <!--JS link-->
+        <script src="Rabbitdata.js"></script>
+        <script src="timerbreak.js"></script>
+    </body>
+</html>

@@ -1,0 +1,456 @@
+/*rabbit should look at the start timer button and tilt its head towards it. -
+the head needs to be linked up to ears 
+should the pupils pause in place for a moment? */
+body{
+font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+color: #2D5D7B;
+background-color: #ECE2D0;
+text-align: center;
+}
+
+#title{
+    font-size: clamp(2rem, 5vw, 3.75rem);
+    text-align:center;
+}
+
+
+
+.buttonlink {
+  display: inline-block; /*Horizontally next to other elements whilst allowing adjustion*/
+  padding: 10px 20px;
+  color: white;
+  text-decoration: none; /* Removes the underline */
+  text-align: center;
+  font-weight: bold;
+  border-radius:20%;
+  
+
+}
+
+.buttonlink:hover {
+  background-color: #627a62; /* Darkens the button on hover */
+}
+#homepage{
+  background-color: #97B497;
+  color:#2d5d7b;
+}
+
+#taskspage{
+  background-color: #97B497;
+  color:#2d5d7b;
+}
+
+#work{
+  background-color: #715b62;
+  color:#d5b9b2;
+  position:relative;
+  margin:0;
+  display:inline-block;
+  font-size:clamp(0.9rem, 2vw, 1.1rem);
+}
+
+.rabbit-container{
+  /*for positioning*/
+  position:relative;
+  width:260px;
+  height:280px;
+  margin:0;
+  flex-shrink:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+}
+
+
+/* The overall rabbit body containing all parts */
+.rabbit {
+  position: relative;
+  width: 200px;
+  height: 220px;
+  margin:0 auto;
+}
+
+/* Head design */
+.head {
+  width: 85px;
+  height: 85px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  border-top-color:#d8d3d3;
+  position: absolute;
+  top: 7px;
+  left: 100px;
+  z-index: 2;
+  box-shadow: inset -10px -5px 0 #f0f0f0;
+  /* Apply the animation */
+  animation: tilt 5s ease-in-out infinite;
+  transform-origin: bottom center; /* Tilts from the bottom edge */
+}
+
+      
+.cheek{
+  width: 95px;
+  height: 50px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  border: 1px solid rgb(216, 211, 211);
+  position: absolute;
+  top: 40px;
+  left: 95px;
+  z-index: 2;
+  box-shadow: inset -10px -5px 0 #f0f0f0;
+  animation: tilt 5s ease-in-out infinite;
+  transform-origin: bottom center; /* Tilts from the bottom edge */
+}
+
+@keyframes tilt{
+  0%, 100% {transform: rotate(0deg);}
+  50%{transform: rotateZ(15deg) rotateX(-10deg);}
+}
+  
+.torso{
+  width: 115px;
+  height: 90px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  border: 1px solid rgb(216, 211, 211);
+  position: absolute;
+  top: 75px;
+  left: 85px;
+  z-index: 0;
+  box-shadow: inset -10px -5px 0 #f0f0f0;
+}
+
+/*inner torso - pink */
+  .torso::after{
+  content: '';
+  position: absolute;
+  top: 35px;
+  left: 20px;
+  width: 70px;
+  height: 50px;
+  background-color: #f3dcd6;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  border: 1px solid #dac3bd;
+}
+
+.face{
+  top:20px;
+  left:10px;
+}
+
+/* Eyes */
+.eyes {
+  width: 25px;
+  height: 25px;
+  background-color: #333333;
+  border-radius: 50%;
+  position: absolute;
+  top: 30px;
+  left: 13px;
+  box-shadow: 40px 0 0 #333333; /* Creates the second eye */
+}
+
+/*Note! COULD ANIMATE SPARKLE SO IT LIKE GOES IN A CIRCLE AND THE EYES GET LARGE?*/
+.eyes::after{
+  content:"";
+  position: absolute;
+  background-color: white;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  left: 4px;
+  top: 5px;
+  box-shadow: 40px 0 0 white; /*creates 2nd sparkle.*/
+  animation: moveRight 5s ease-in-out infinite; /*links to moveRight animation below*/
+}
+
+@keyframes moveRight{
+  0%, 100% { transform: translateX(0);}
+  50%{transform: translateX(12px);} /*50% ensures a smooth transition between right and left*/
+}
+/*Animation for the eyes to grow and the sparkle to go in a circle? - should go somewhere else. Too much movement is distracting*/
+
+/* Nose */
+.nose {
+  width: 12px;
+  height: 8px;
+  background-color: #f3dcd6; /*analogous*/
+  border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+  position: absolute;
+  top: 54px;
+  left: 40px;
+  box-shadow: inset -1px -2px 0 #d9bfbf; /* Creates a subtle inner shadow for depth */
+}
+
+/* Cheeks */
+.cheeks {
+  width: 14px;
+  height: 10px;
+  background-color: #f3dcd6;
+  border-radius: 50%;
+  position: absolute;
+  top: 54px;
+  left: 7px;
+  box-shadow: 62px 0 0 #f3dcd6; /* Creates the second cheek */
+}
+
+/* Base Ear Class */
+.ear {
+  width: 40px;
+  height: 85px;
+  background-color: #ffffff;
+  border-radius: 70% 70% 90% 90% / 40% 60% 100% 100%;
+  border: 1px solid rgb(216, 211, 211);
+  position: absolute;
+  top: -79px;
+  transform-origin: bottom center;
+  box-shadow: inset -3px -6px 0 #f0f0f0;
+}
+
+/* Inner pink layer for ears */
+.ear::after {
+  content: '';
+  position: absolute;
+  top: 14px;
+  left: 8px;
+  width: 20px;
+  height: 69px;
+  background-color: #f3dcd6;
+  border-radius: 60% 60% 90% 90% / 40% 60% 100% 100%;
+  border: 1px solid rgb(216, 211, 211);
+  box-shadow: inset -1px -5px 0 #dfc9c3f3;
+}
+
+/*separate ear positioning*/
+.ear.left {
+  left: 3px;
+  transform: rotate(-40deg);
+}
+
+.ear.right {
+  right: 3px;
+  transform: rotate(40deg);
+}
+
+.foot{
+  width: 40px;
+  height: 25px;
+  background-color: #ffffff;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  border: 1px solid rgb(216, 211, 211);
+  position: absolute;
+  top: -70px;
+  transform-origin: bottom center;
+  box-shadow: inset -10px -5px 0 #f0f0f0;
+}
+
+.foot.left{
+  top: 140px;
+  right: 5px;
+}
+.foot.right{
+  top: 140px;
+  left: 90px;
+}
+
+/*this is all currently not working. */
+.slidecontainer{
+  width:100%;
+}
+
+.slider{
+  -webkit-appearance: none;
+  appearance: none;
+  width: 90%; /*leaves space on edges */
+  height: 25px; /* Specified height */
+  border-radius:2rem; /*neat rounded edges*/
+  background: #8cbddb; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+
+}
+
+.slider:hover{
+  opacity:1; /*shown on mouse hover, darkens the colour of the slider*/
+}
+/*adds an image as the slider.*/
+/*targets slider thumb in chrome, safari, etc, browsers using 'webkit/blink' slider styling*/
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 30px;
+  height: 30px;
+  border: none;
+  background:url('../images/carrot.png'); /*isn't workign*/
+  background-size:contain;
+  background-position:center;
+  background-repeat:no-repeat;
+  cursor: pointer;
+}
+/*targets firefox (moz = mozilla)*/
+.slider::-moz-range-thumb {
+  width: 30px;
+  height: 30px;
+  border: none;
+  background-image: url('../images/carrot.png');
+  background-size:contain;
+  background-position:center;
+  background-repeat:no-repeat;
+  cursor: pointer;
+}
+
+/*coins*/
+.coins{
+  font-size: 1.3rem;
+  white-space:nowrap;
+}
+
+.timer-start-area{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:30px;
+  min-height:320px;
+  margin-top:20px;
+}
+
+/* Full-screen background dim */
+.popup-overlay {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 9999; /* Keeps it on top of everything */
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+/* The actual message box */
+.popup-content {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 400px;
+    width: 80%;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transform: scale(0.7);
+    transition: transform 0.4s ease;
+}
+
+/* Active class applied by JavaScript */
+.popup-overlay.show {
+    display: flex;
+    opacity: 1;
+}
+
+.popup-overlay.show .popup-content {
+    transform: scale(1);
+}
+
+/* Close button styling */
+#close-popup {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #333333;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#close-popup:hover {
+    background-color: #555555;
+}
+
+#instr{
+  color: #715b62;
+  font-size:clamp(1rem, 2vw, 1.3rem);
+}
+
+#studytime{
+  font-size:clamp(1rem, 2vw, 1.3rem);
+}
+
+#break-display{
+  font-size:clamp(1rem, 2vw, 1.3rem);
+}
+
+.popup-content h1{
+  font-size:clamp(1.5rem, 4vw, 2.2rem);
+}
+
+.popup-content p{
+  font-size:clamp(0.9rem, 2vw, 1.1rem);
+}
+
+/*when the happiness is 0, this should appear*/
+#rabbit.sad {
+    filter:grayscale(80%);
+    opacity:0.75;
+}
+
+/*mobile*/
+@media (max-width:700px) {
+
+  .timer-start-area{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    justify-content:center;
+    gap:15px;
+    padding:0 5px;
+    min-height:320px;
+    margin-top:20px;
+  }
+
+  /*MAKE RABBIT SMALLER*/
+  .rabbit-container{
+    width:210px;
+    height:280px;
+    margin:0;
+    flex-shrink:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+  }
+
+  .rabbit{
+    width:200px;
+    height:220px;
+    margin:0;
+  }
+
+  /*make the start timer button smaller*/
+  #work{
+    padding:9px 12px;
+    margin:0;
+    flex-shrink:0;
+  
+  }
+
+  .slider::-webkit-slider-thumb{
+    width:35px;
+    height:35px;
+  }
+
+  .slider::-moz-range-thumb{
+    width:35px;
+    height:35px;
+  }
+
+  .coins{
+    font-size:1rem;
+    }
+}

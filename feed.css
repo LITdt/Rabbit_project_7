@@ -1,0 +1,528 @@
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    background-color:#ece2d0;
+    font-family: Arial, Helvetica, sans-serif;
+    color:#2d5d7b;
+}
+
+/*top bar*/
+.top-bar{
+    width:90%;
+    max-width:1100px;
+    margin:0 auto;
+    padding: 20px 0;
+
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.top-bar h1{
+    margin:0;
+    flex:1;
+    font-size:clamp(1.8rem, 5vw, 3rem);
+}
+
+.top-buttons{
+    display:flex;
+    gap:10px;
+}
+
+.top-buttons a{
+    text-decoration: none;
+    color: #2d5d7b;
+    background-color: #97b497;
+    border-radius:20%;
+    padding:8px 18px;
+}
+
+.coins{
+    font-size: 1.3rem;
+    white-space:nowrap;
+}
+
+/*main*/
+.feed-container{
+    width:90%;
+    max-width:900px;
+    margin:10px auto 30px;
+    text-align:center;
+}
+
+.feed-container h2{
+    font-size: clamp(1.3rem, 3vw, 2rem);
+    margin-bottom:5px;
+}
+
+.instruction{
+    margin-top:5px;
+    font-size:clamp(0.9rem, 2vw, 1.1rem);
+}
+
+/*food*/
+.food-area{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+    margin:20px auto;
+}
+
+#food-list{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.food-item{
+    width:110px;
+    height:90px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    background-color:#f5eedc;
+    border:2px solid #2d5d7b;
+    border-radius:20px;
+    font-size: 2.5rem;
+    cursor: grab; /*telss user the element can be selected and dragged*/
+    transition:transform 0.2s;
+}
+
+.food-item span{
+    font-size:clamp(0.75rem, 1.5vw, 0.9rem);
+    margin-top:5px;
+}
+
+.food-item:hover{
+    transform:scale(1.08);
+}
+
+.food-item:active{
+    cursor:grabbing;
+}
+
+/*rabbit area*/
+.rabbit-area{
+    width:100%;
+    height:400px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+    border:2px solid #2d5d7b;
+    border-radius: 20px;
+    background-color:#f5eedc;
+    overflow:hidden;
+}
+
+/*rabbit*/
+#rabbit{
+    width:150px;
+    height:230px;
+    position:relative;
+    cursor:pointer;
+    transition:transform 0.2s;
+}
+
+/*happy animation*/
+#rabbit.eating{
+    animation: eating 0.7s ease;
+}
+
+@keyframes eating{
+    0%, 100%{
+        transform:scale(1);
+    }
+    30% {
+        transform:scale(1.15) rotate(-4deg);
+    }
+
+    60%{
+        transform: scale(1.1) rotate(4deg);
+    }
+}
+
+/*yummy*/
+#yummy{
+    position:absolute;
+    top: 70px;
+    font-size:clamp(1.5rem, 4vw, 2rem);
+    font-weight:bold;
+    opacity:0;
+    transform:translateY(20px) scale(0.5);
+
+    pointer-events:none; /*prevents element from gettinng clicked, dragged, hovered, etc. the action will instead pass to any elements below it.*/
+
+}
+
+#yummy.show{
+    animation: yummyAnimation 1.5s ease forwards;
+}
+
+@keyframes yummyAnimation{
+    0%{
+        opacity:0;
+        transform: translateY(20px) scale(0.5);
+    }
+
+    30%{
+        opacity:1;
+        transform:translateY(0) scale(1.2);
+    }
+
+    70%{
+        opacity:1;
+        transform:translateY(-10px) scale(1);
+    }
+
+    100%{
+        opacity:0;
+        transform:translateY(-50px) scale(0.8);
+    }
+}
+
+/*sparkles*/
+.food-sparkles{
+    position:absolute;
+    font-size:1.8rem;
+    opacity:0;
+    pointer-events:none;
+}
+
+.food-sparkles.show{
+    animation: sparkleAnimation 1.3s ease;
+}
+
+@keyframes sparkleAnimation{
+    0%{
+        opacity:0;
+        transform:scale(0.4);
+    }
+    30%{
+        opacity:1;
+        transform:scale(1.2);
+    }
+
+    70%{
+        opacity:1;
+        transform:scale(1);
+    }
+
+    100%{
+        opacity:0;
+        transform:scale(1.5);
+    }
+}
+
+/*message*/
+#feed-message{
+    min-height:25px;margin:15px;
+    font-size:clamp(0.9rem, 2vw, 1.1rem);
+}
+
+/*happiness*/
+.happiness{
+    width:80%;
+    max-width:500px;
+    margin:20px auto;
+}
+
+.happiness p{
+    margin:5px;
+    font-size:clamp(1rem, 2vw, 1.2rem);
+}
+
+.happiness-bar{
+    width:100%;
+    height:22px;
+    border:2px solid #2d5d7b;
+    border-radius:20px;
+    overflow:hidden;
+    background-color:white;
+}
+
+.happiness-fill{
+    width:70%;
+    height:100%;
+    background-color:#a8c686;
+    border-radius:20px;
+    transition:width 0.4s;
+}
+
+#happiness-number{
+    display:block;
+    margin-top:5px;
+    font-weight:bold;
+    font-size:clamp(1rem, 2vw, 1.2rem);
+}
+
+/*rabbit bod*/
+.head{
+    width:85px;
+    height:85px;
+    background-color:#ffffff;
+    border-radius:50%;
+    border:1px solid transparent;
+    border-top-color:#d8d3d3;
+
+    position:absolute;
+    top:20px;
+    left:35px;
+    box-shadow: inset -10px -5px 0 #f0f0f0;
+}
+
+.cheek{
+    width:95px;
+    height:50px;
+    background-color:#ffffff;
+    border-radius:50%;
+
+    border:1px solid #d8d3d3;
+    position:absolute;
+    top:55px;
+    left:29px;
+    box-shadow: inset -10px -5px 0 #f0f0f0;
+
+}
+
+.torso{
+    width:115px;
+    height:90px;
+    background-color:#ffffff;
+    border-radius:50%;
+    border:1px solid #d8d3d3;
+    position:absolute;
+    top:95px;
+    left:17px;
+    box-shadow: inset -10px -5px 0 #f0f0f0;
+
+}
+
+.torso::after{
+    content:'';
+    position:absolute;
+    top:32px;
+    left:20px;
+    width:70px;
+    height:50px;
+    background-color:#f3dcd6;
+    border-radius:50%;
+    border:1px solid #dac3bd;
+}
+
+/*eyes*/
+.eyes{
+    width:25px;
+    height:25px;
+    background-color:#333333;
+    border-radius:50%;
+    position:absolute;
+    top:30px;
+    left:10px;
+    box-shadow: 40px 0 0 #333333;
+}
+
+.eyes::after{
+    content:"";
+    position:absolute;
+    background-color: white;
+    width:20px;
+    height:20px;
+
+    border-radius:50%;
+    left:3px;
+    top:3px;
+    box-shadow:40px 0 0 white;
+}
+
+/*nose*/
+.nose{
+    width:12px;
+    height:8px;
+    background-color:#f3dcd6;
+    border-radius:50%;
+    position:absolute;
+    top:54px;
+    left:38px;
+    box-shadow:inset -1px -2px 0 #d9bfbf;
+}
+
+/*cheeks*/
+.cheeks{
+    width:14px;
+    height:10px;
+    background-color:#f3dcd6;
+    border-radius:50%;
+    position:absolute;
+    top:54px;
+    left:5px;
+    box-shadow:62px 0 0 #f3dcd6;
+}
+
+/*eyes*/
+.ear{
+    width:50px;
+    height:85px;
+    background-color:#ffffff;
+    border-radius: 70% 70% 90% 90% / 40% 60% 100% 100%;
+    border: 1px solid #d8d3d3;
+    position:absolute;
+    top: -79px;
+    transform-origin: bottom center;
+    box-shadow: inset -3px -6px 0 #f0f0f0;
+
+}
+
+.ear::after{
+    content:"";
+    position:absolute;
+    top:14px;
+    left:8px;
+    width:30px;
+    height: 69px;
+    background-color: #f3dcd6;
+    border-radius: 60% 60% 90% 90% / 40% 60% 100% 100%;
+    border:1px solid #d8d3d3;
+}
+
+.ear.left{
+    left:3px;
+    transform:rotate(-40deg);
+}
+
+.ear.right{
+    right:3px;
+    transform:rotate(40deg);
+}
+
+/*feet*/
+.foot{
+    width:50px;
+    height:35px;
+    background-color:#ffffff;
+    border-radius:50%;
+    border:1px solid #d8d3d3;
+    position:absolute;
+    top:165px;
+    box-shadow:inset -10px -5px 0 #f0f0f0;
+}
+
+.foot.left{
+    right:80px;
+
+}
+
+.foot.right{
+    left:80px;
+}
+
+/* Full-screen background dim */
+.popup-overlay {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 9999; /* Keeps it on top of everything */
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+/* The actual message box */
+.popup-content {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 400px;
+    width: 80%;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transform: scale(0.7);
+    transition: transform 0.4s ease;
+}
+
+/* Active class applied by JavaScript */
+.popup-overlay.show {
+    display: flex;
+    opacity: 1;
+}
+
+.popup-overlay.show .popup-content {
+    transform: scale(1);
+}
+
+/* Close button styling */
+#close-popup {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #333333;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#close-popup:hover {
+    background-color: #555555;
+}
+
+.popup-content h1{
+  font-size:clamp(1.5rem, 4vw, 2.2rem);
+}
+
+.popup-content p{
+  font-size:clamp(0.9rem, 2vw, 1.1rem);
+}
+
+/*when the happiness is 0, this should appear*/
+#rabbit.sad {
+    filter:grayscale(80%);
+    opacity:0.75;
+}
+
+/*mobile*/
+@media (max-width:700px){
+    .top-bar{
+        width:94%;
+        gap:8px;
+    }
+
+    .top-buttons{
+        gap:5px;
+    }
+
+    .top-buttons a{
+        padding: 6px 10px;
+        font-size:0.85rem;
+    }
+
+    .coins{
+        font-size:1rem;
+    }
+
+    .feed-container{
+        width:94%;
+    }
+
+    .rabbit-area{
+        height:330px;
+    }
+
+    .food-item{
+        width:90px;
+        height:75px;
+        font-size:2rem;
+    }
+
+}

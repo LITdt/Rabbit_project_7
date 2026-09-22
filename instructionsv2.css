@@ -1,0 +1,178 @@
+
+body{
+font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+color: #2D5D7B;
+background-color: #ECE2D0;
+text-align: center;
+}
+
+#instruct{
+    font-size:clamp(2rem, 5vw, 3.5rem);
+    text-align:center;
+}
+
+
+
+.buttonlink {
+  display: inline-block; /*Horizontally next to other elements whilst allowing adjustion*/
+  padding: 10px 20px;
+  color: white;
+  text-decoration: none; /* Removes the underline */
+  border-radius: 20%;
+  text-align: center;
+  font-weight: bold;
+  font-size:clamp(0.85rem, 1.5vw, 1rem);
+  
+
+}
+
+.buttonlink:hover {
+  background-color: #627a62; /* Darkens the button on hover */
+}
+#homepage{
+  background-color: #97B497;
+  color:#2d5d7b;
+}
+
+#intro{
+  font-size:clamp(1em, 2vw, 1.7em);
+}
+
+.headings{
+  font-size:clamp(1.7em, 2vw, 2.3em);
+}
+
+#nav{
+  font-size:clamp(1em, 2vw, 1.7em);
+}
+
+
+#warn{
+  font-size:clamp(1em, 2vw, 1.7em);
+}
+
+#rabs{
+  font-size:clamp(1em, 2vw, 1.7em);
+}
+
+#other{font-size:clamp(1em, 2vw, 1.7em);}
+
+/* Full-screen background dim */
+.popup-overlay {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 9999; /* Keeps it on top of everything */
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+/* The actual message box */
+.popup-content {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 400px;
+    width: 80%;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transform: scale(0.7);
+    transition: transform 0.4s ease;
+}
+
+/* Active class applied by JavaScript */
+.popup-overlay.show {
+    display: flex;
+    opacity: 1;
+}
+
+.popup-overlay.show .popup-content {
+    transform: scale(1);
+}
+
+/* Close button styling */
+#close-popup {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #333333;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#close-popup:hover {
+    background-color: #555555;
+}
+
+.popup-content h1{
+  font-size:clamp(1.5rem, 4vw, 2.2rem);
+}
+
+.popup-content p{
+  font-size:clamp(0.9rem, 2vw, 1.1rem);
+}
+
+.sectionz{
+  width:90%;
+  max-width:800px;
+  margin:20px auto;
+  text-align:center;
+  padding:20px;
+  background-color:#ebe1cf;
+  border:2px solid #2d5d7b;
+  border-radius:20px;
+  box-sizing:border-box;
+}
+
+#pages{
+  font-size:clamp(1em, 2vw, 1.7em);
+  width:90%;
+  max-width:800px;
+  margin:20px auto;
+  text-align:center;
+  padding:20px;
+  background-color:#f5eedc;
+  border:2px solid #2D5D7B;
+  border-radius:20px;
+  box-sizing:border-box;
+}
+.sectionz2{
+  width:90%;
+  max-width:800px;
+  margin:20px auto;
+  text-align:center;
+  padding:20px;
+  background-color:#f5eedc;
+  border:2px solid #2d5d7b;
+  border-radius:20px;
+  box-sizing:border-box;
+}
+
+#copyright{
+  font-size:clamp(0.7rem, 2vw, 1rem);
+}
+/*when the happiness is 0, this should appear*/
+#rabbit.sad {
+    filter:grayscale(40%);
+    transform:translateY(5px);
+    opacity:0.75;
+}
+
+@media (max-width: 700px){ /*this is more a just in case*/
+  .sectionz{
+    width:92%;
+    padding:15px;
+    margin:15px auto;
+  }
+
+  .sections{ /*the smaller subheadings*/
+    font-size:clamp(1rem, 2vw, 1.4rem);
+  }
+}

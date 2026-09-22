@@ -1,0 +1,92 @@
+<!-- This page is the tasks page. It should contain instructions on use, and there should be a 
+ maximum of 3 active tasks allowed before you have to complete them. completing a task earns
+ 2 coins. 
+  -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tasks</title>
+
+        <link rel="stylesheet" href="tasks.css">
+        
+    </head>
+
+    <body>
+        <div class="parent-container">
+
+            <!--nav-->
+            <div class="bn-container"> <!--button container-->
+
+                <a href="index.html" class="buttonlink" id="homepage">Home</a>
+                <a href="timerpage.html" class="buttonlink" id="timerpage">Timer</a>
+
+                <span id="coin-count">🪙 0</span>
+            </div>
+            
+            <!--page title.-->
+            <h1 id="title">Tasks</h1>
+
+            <div class="task-container">
+
+                <div class="task-list">
+                    <!-- Input section -->
+                    <div class="input-area">
+                        <input type="text" id="task-input" placeholder="Type a new study task...">
+                        <button id="add-task-btn">Add Task</button>
+                    </div>
+                    
+                    <div class="task-instr">
+                        <strong>How to use this page!</strong>
+                        <p> Type a task and click <b> Add Task</b> to add it. </p>
+                        <p>Click <b>Complete</b> when you finish a task.</p>
+                        <p>Click <b>Delete</b> to remove a task.</p>
+                        <p>You can have a maximum of 3 active tasks.</p>
+                        <p> You can earn <b>2</b> coins when you complete a task, so get studying!!</p>
+                    </div>
+                    <!-- Where tasks will show up -->
+                    <ul id="task-list"></ul>
+                </div>
+            </div>
+            
+            <!--rabbit-->
+            <div class="rabbit-container">
+                <div class="rabbit" id="rabbit">
+
+                    <div class="head">
+                        <div class="tail"></div>
+                        <div class="ear left"></div>
+                        <div class="ear right"></div>
+                    </div>
+                    <div class="head">
+                        <div class="face">
+                            <div class="eyebrows"></div>
+                            <div class="cheeks"></div>
+                            <div class="eyes right"></div>
+                            <div class="eyes left"></div>
+                            <div class="mouth"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <!-- Shadow beneath the rabbit -->
+                <div class="shadow"></div> <!--placed in same container to be linked under each other.-->
+            </div>
+        </div>
+
+        <div id="night-popup" class="popup-overlay">
+                <div class="popup-content">
+                    <h1>Late Night Notice!</h1>
+                    <p>It is past 9:00 PM. Your rabbit is asleep! Please also get some rest! Resume studying at 6.30 AM or later.</p>
+                    <button id="close-popup">Dismiss</button>
+                </div>
+        </div>
+        <!-- this is how u link 2 js <script src="script.js></script>"-->
+         <!--shared data must load 1st-->
+         <script src="Rabbitdata.js"></script>
+         <!--task functionality.-->
+         <script src="tasks.js"></script>
+    </body>
+</html>

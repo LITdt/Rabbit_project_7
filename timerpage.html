@@ -1,0 +1,72 @@
+<!-- This page is the timer homepage. It should contain a 
+ slider bar for how long the timer will be, 
+ buttons leading to homepage and tasks page, a start timer button
+ leading to the 'work' pomodoro timer, and a small idle rabbit animation.  -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Timer home page</title>
+
+        <link rel="stylesheet" href="timerpage.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles:wght@400;700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="parent-container">
+            <a href="index.html" class="buttonlink" id="homepage">Home</a>
+            <a href="tasks.html" class="buttonlink" id="taskspage">Tasks</a>
+            <div class="coins">
+                <span id="coin-count"> $0</span>
+            </div>
+
+            <h1 id="title">Timer</h1>
+            <div class="slidecontainer">
+                <input type="range" min="1" max="90" value="50" class="slider" id="worktimer">
+                <p id="studytime"> Study time: <span id="time-display">50</span> minutes</p>
+            </div>
+            <p id="break-display"> Break time: <span id="break-time">10</span> minutes.</p>
+            <p id="instr"><b>Choose your study period length with the slider!</b> <br> Study for a minimum of 5 minutes to get rewards!</p>
+
+            <div class="timer-start-area">
+                <div class="rabbit-container">
+                    
+                    <div class="rabbit" id="rabbit">
+                        
+                        <div class="torso"></div>
+                        <div class="cheek"></div>
+
+                        <div class="head">
+                            <div class="ear left"></div>
+                            <div class="ear right"></div>
+                            
+                            <div class="face">
+                                <div class="eyes"></div>
+                                <div class="nose"></div>
+                                <div class="cheeks"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="foot left"></div>
+                        <div class="foot right"></div>
+                    </div>
+                </div>
+                <a href="timerwork.html" class="buttonlink" id="work">Start Timer!</a>
+            </div>
+        </div>
+
+        <div id="night-popup" class="popup-overlay">
+                <div class="popup-content">
+                    <h1>Late Night Notice!</h1>
+                    <p>It is past 9:00 PM. Your rabbit is asleep! Please also get some rest! Resume studying at 6.30 AM or later.</p>
+                    <button id="close-popup">Dismiss</button>
+                </div>
+        </div>
+
+        <!-- this is how u link 2 js <script src="script.js></script>"-->
+         <script src="Rabbitdata.js"></script>
+         <script src="timerpage.js"></script>
+    </body>
+</html>

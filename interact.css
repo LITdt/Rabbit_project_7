@@ -1,0 +1,515 @@
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    background-color:#ece2d0;
+    font-family:Arial, Helvetica, sans-serif;
+    color:#2d5d7b;
+}
+
+/*top bar*/
+.top-bar{
+    width:90%;
+    max-width:1100px;
+    margin:0 auto;
+    padding: 20px 0;
+    display: flex;
+    align-items:center;
+    gap:20px;
+}
+
+/*title*/
+.top-bar h1{
+    margin:0;
+    flex:1;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+}
+
+/*top buttons*/
+.top-buttons{
+    display:flex;
+    gap:10px;
+}
+
+.top-buttons a{
+    text-decoration: none;
+    color: #2d5d7b;
+    background-color: #97b497;
+    border-radius: 20%;
+    padding: 8px 18px;
+    transition: 0.2s;
+}
+
+.top-buttons a:hover{
+    transform: scale(1.05);
+}
+
+/*coins*/
+.coins{
+    font-size: 1.3rem;
+    white-space:nowrap;
+}
+
+/*main*/
+.interact-container{
+    width:90%;
+    max-width:1100px;
+    margin: 10px auto 30px;
+    display:grid;
+    grid-template-columns: 2fr 1fr;
+    gap:40px;
+    align-items:start;
+}
+
+/*rabbit section*/
+.rabbit-section{
+    text-align:center;
+    min-width:0;
+
+}
+
+.rabbit-section h2{
+    font-size: clamp(1.3rem, 3vw, 2rem);
+    margin-bottom:10px;
+}
+
+/*rabbit area*/
+.rabbit-area{
+    width:100%;
+    height:350px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border:3px solid #2d5d7b;
+    border-radius:20px; /*makes it look like a tamagotchi screen*/
+    background-color:#f5eedc;
+    overflow:hidden;
+}
+
+/*rabbit*/
+#rabbit{
+    position: relative; /*makes it the reference point for all body parts*/
+    width:280px;
+    height: 200px;;
+    flex-shrink:0;
+    transition: transition 0.3s;
+}
+
+/*rabbit reaction*/
+#rabbit.happy{
+    animation: happyRabbit 0.5s ease;
+}
+
+@keyframes happyRabbit{
+    0%, 100%{
+        transform:scale(1);
+    }
+    50%{
+        transform: scale(1.1) rotate(-3deg);
+    }
+}
+
+.happiness{
+    width:80%;
+    max-width:500px;
+    margin:20px auto;
+}
+
+.happiness p{
+    margin:5px;
+    font-size:clamp(1rem, 2vw, 1.2rem);
+}
+
+/*bar*/
+.happiness-bar{
+    width:100%;
+    height:22px;
+    border:2px solid #2d5d7b;
+    border-radius:20px;
+    overflow:hidden;
+    background-color:white;
+}
+
+/*filled section*/
+.happiness-fill{
+    width:70%;
+    height:100%;
+    background-color: #a8c686;
+    border-radius:20px;
+    transition:width 0.4s;
+}
+
+#happiness-number{
+    display:block;
+    margin-top:5px;
+    font-weight:bold;
+    font-size:clamp(1rem, 2vw, 1.2rem);
+}
+
+/*interaction message*/
+#interaction-message{
+    min-height:25px;
+    margin:10px;
+    font-size:clamp(0.9rem, 2vw, 1.1rem);
+}
+
+/*interaction menu*/
+.interaction-menu{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+
+}
+
+.interaction-menu h3{
+    margin-top:0;
+    font-size: clamp(1.2rem, 2.5vw, 1.4rem);
+
+}
+
+/*buttons*/
+.interaction-button{
+    width:100%;
+    min-height:80px;
+    display:flex;
+    align-items:center;
+    gap:15px;
+    padding:12px;
+    border:2px solid #2d5d7b;
+    border-radius:15px;
+    background-color:#f5eedc;
+    color:#2d5d7b;
+    cursor:pointer;
+    text-align:left;
+    transition: transform 0.2s, background-color 0.2s;
+    text-decoration:none;
+}
+
+.interaction-button:hover{ /*this causes the buttons to shift to the right when hovered on. pretty cool, right?*/
+    transform: translateX(5px);
+    background-color:#e3d5bc;
+}
+
+/*icons*/
+.interaction-icon{
+    font-size:2rem;
+    min-width:45px;
+    text-align:center;
+}
+
+/*button text*/
+.interaction-button strong{
+    display:block;
+    font-size:clamp(1rem, 2vw, 1.1rem);
+}
+
+.interaction-button small{
+    display:block;
+    margin-top:4px;
+    opacity:0.8;
+    font-size:clamp(0.8rem, 1.5vw, 1rem);
+}
+
+
+/* Head design */
+.head {
+    width: 85px;
+    height: 85px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    border: 1px solid transparent;
+    border-top-color:#d8d3d3;
+    position: absolute;
+    top:45px;
+    left:98px;
+    box-shadow: inset -10px -5px 0 #f0f0f0;
+}
+
+.cheek{
+    width: 95px;
+    height: 50px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    border: 1px solid rgb(216, 211, 211);
+    position: absolute;
+    top:80px;
+    left:93px;
+    box-shadow: inset -10px -5px 0 #f0f0f0;
+}
+
+.torso{
+    width: 115px;
+    height: 90px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    border: 1px solid rgb(216, 211, 211);
+    position: absolute;
+    left:83px; 
+    top: 110px;       
+    box-shadow: inset -10px -5px 0 #f0f0f0;
+}
+
+/*inner torso - pink */
+.torso::after{
+    content: '';
+    position: absolute;
+    top: 35px;
+    left: 20px;
+    width: 70px;
+    height: 50px;
+    background-color: #f3dcd6;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    border: 1px solid #dac3bd;
+}
+
+.face{
+    top:20px;
+    left:10px;
+}
+
+/* Eyes */
+
+/*inner sparkle -isn't visible. Needs to be ontop.*/
+.sparkle{
+    width:5px;
+    height:5px;
+    background-color:#ffffff;
+    border-radius: 50%;
+    box-shadow: 40px 0 0 #ffffff;
+    margin-left:27px;
+    margin-top: 42px;
+    position:absolute;
+    z-index:9999; /*is meant to keep the sparkle on top. */
+    animation: sparkles 3s ease-in-out infinite;
+}
+
+
+@keyframes sparkles {
+        0%, 100% { transform: translateY(1px); }
+        50% { transform: translateY(5px) translateX(-3px); }
+        }
+
+.eyes {
+    width: 25px;
+    height: 25px;
+    background-color: #333333;
+    border-radius: 50%;
+    position: absolute;
+    top: 30px;
+    left: 13px;
+    box-shadow: 40px 0 0 #333333; /* Creates the second eye */
+}
+
+/*Note! COULD ANIMATE SPARKLE SO IT LIKE GOES IN A CIRCLE AND THE EYES GET LARGE?*/
+.eyes::after{
+    content:"";
+    position: absolute;
+    background-color: white;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    left: 4px;
+    top: 5px;
+    box-shadow: 40px 0 0 white; /*creates 2nd sparkle.*/
+    animation: moveRight 5s ease-in-out infinite; /*links to moveRight animation below*/
+}
+
+    
+/* Nose */
+.nose {
+    width: 12px;
+    height: 8px;
+    background-color: #f3dcd6; /*analogous*/
+    border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+    position: absolute;
+    top: 54px;
+    left: 40px;
+    box-shadow: inset -1px -2px 0 #d9bfbf; /* Creates a subtle inner shadow for depth */
+}
+
+/* Cheeks */
+.cheeks {
+    width: 14px;
+    height: 10px;
+    background-color: #f3dcd6;
+    border-radius: 50%;
+    position: absolute;
+    top: 54px;
+    left: 7px;
+    box-shadow: 62px 0 0 #f3dcd6; /* Creates the second cheek */
+        }
+
+/* Base Ear Class */
+.ear {
+    width: 40px;
+    height: 85px;
+    background-color: #ffffff;
+    /* border-radius: top-left top-right bottom-right bottom-left / left-top right-top right-bottom left-bottom */
+    border-radius: 50% 50% 70% 70% / 60% 60% 100% 100% ;
+    border: 1px solid rgb(216, 211, 211);
+    position: absolute;
+    top: -79px;
+    transform-origin: bottom center;
+    box-shadow: inset -3px -6px 0 #f0f0f0;
+}
+/* Inner pink layer for ears */
+.ear::after {
+    content: '';
+    position: absolute;
+    top: 14px;
+    left: 8px;
+    width: 20px;
+    height: 69px;
+    background-color: #f3dcd6;
+    border-radius: 60% 60% 90% 90% / 40% 60% 100% 100%;
+    border: 1px solid rgb(216, 211, 211);
+    box-shadow: inset -1px -5px 0 #dfc9c3f3;
+}
+
+/*separate ear positioning*/
+.ear.left {
+    left: 3px;
+    transform: rotate(-40deg);
+}
+
+.ear.right {
+    right: 3px;
+    transform: rotate(40deg);
+}
+
+.foot{
+    width: 40px;
+    height: 25px;
+    background-color: #ffffff;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    border: 1px solid rgb(216, 211, 211);
+    position: absolute;
+    top: -70px;
+    transform-origin: bottom center;
+    box-shadow: inset -10px -5px 0 #f0f0f0;
+}
+.foot.left{
+    top: 180px;
+    left: 90px;
+}
+.foot.right{
+    top: 180px;
+    left: 155px;
+}
+
+/* Full-screen background dim */
+.popup-overlay {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 9999; /* Keeps it on top of everything */
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+/* The actual message box */
+.popup-content {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 400px;
+    width: 80%;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transform: scale(0.7);
+    transition: transform 0.4s ease;
+}
+
+/* Active class applied by JavaScript */
+.popup-overlay.show {
+    display: flex;
+    opacity: 1;
+}
+
+.popup-overlay.show .popup-content {
+    transform: scale(1);
+}
+
+/* Close button styling */
+#close-popup {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #333333;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#close-popup:hover {
+    background-color: #555555;
+}
+
+.popup-content h1{
+  font-size:clamp(1.5rem, 4vw, 2.2rem);
+}
+
+.popup-content p{
+  font-size:clamp(0.9rem, 2vw, 1.1rem);
+}
+
+/*when the happiness is 0, this should appear*/
+#rabbit.sad {
+    filter:grayscale(80%);
+    opacity:0.75;
+}
+
+/*MOBILE*/
+@media (max-width:700px){
+    .top-bar{
+        width:94%;
+        gap:8px
+    }
+    .top-buttons{
+        gap:5px;
+    }
+
+    .top-buttons a{
+        padding: 6px 10px;
+        font-size:0.85rem;
+    }
+    
+    .coins{
+        font-size:1rem;
+    }
+
+    .interaction-container{
+        width:90%;
+        grid-template-columns:1fr;
+        gap:30px;
+    }
+
+    .rabbit-area{
+        height:280px;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        overflow:hidden;
+    }
+
+
+    .interaction-menu{
+        width:100%;
+        padding: 0 5px;
+    }
+
+    .interaction-button{
+        width:100%;
+        margin-left:0;
+    }
+
+}
+

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title> Shop page</title>
+    <link rel="stylesheet" href="shoppage.css">
+</head>
+
+<body>
+    <!--Navigation on top-->
+    <header class="shop-header">
+        <h1>Shop</h1>
+
+        <nav>
+            <a href="interact.html"> Interact</a>
+            <a href="index.html"> Home</a>
+        </nav>
+
+        <div class="coins">
+            <span id="coin-count"> 0</span>
+        </div>
+    </header>
+
+    <!--Shop content-->
+    <main>
+        <h2>Click to buy!</h2>
+        <div class="shop-container">
+            <div class="food-list" id="food-list">
+
+                <!--Food number 1 - carrots $5, 10 happiness-->
+                <button class="food-item" onclick="buyFood('Carrot', 5)">
+                    <span class="food-price">5 🪙</span>
+                    <span class="food-image">🥕</span>
+                    <span class="food-name">Carrot</span>
+                </button>
+
+                <!--Food number 2 - apples $10, 8 happiness-->
+                <button class="food-item" onclick="buyFood('Apple', 10)">
+                    <span class="food-price"> 10 🪙</span>
+                    <span class="food-image">🍎</span>
+                    <span class="food-name"> Apple</span>
+                </button>
+
+                <!--food number 3 - cake $15, 10happiness-->
+                <button class="food-item" onclick="buyFood('Cake', 15)">
+                    <span class="food-price">15 🪙</span>
+                    <span class="food-image">🍰</span>
+                    <span class="food-name"> Cake</span>
+                </button>
+
+                <!--food number 4 - lettuce, $5, 5happiness-->
+                <button class="food-item" onclick="buyFood('Lettuce', 5)">
+                    <span class="food-price">5 🪙</span>
+                    <span class="food-image">🥬</span>
+                    <span class="food-name">Lettuce</span>
+                </button>
+
+                <!--food number 5 - strawberry-->
+                <button class="food-item" onclick="buyFood('Strawberry', 12)">
+                    <span class="food-price">12 🪙</span>
+                    <span class="food-image">🍓</span>
+                    <span class="food-name">Strawberry</span>
+                </button>
+
+                <!--food number 6- lolly -->
+                <button class="food-item" onclick="buyFood('Lolly', 7)">
+                    <span class="food-price">7 🪙</span>
+                    <span class="food-image">🍬</span>
+                    <span class="food-name">Lolly</span>
+                </button>
+
+                <!--food number 7- donut -->
+                <button class="food-item" onclick="buyFood('Donut', 10)">
+                    <span class="food-price">10 🪙</span>
+                    <span class="food-image">🍩</span>
+                    <span class="food-name">Donut</span>
+                </button>
+
+                <!--food number 8- watermeloon -->
+                <button class="food-item" onclick="buyFood('Watermelon', 20)">
+                    <span class="food-price">20 🪙</span>
+                    <span class="food-image">🍉</span>
+                    <span class="food-name">Watermelon</span>
+                </button>
+
+            </div>
+
+        </div>
+        <!--message displayed after buying-->
+        <p id="shop-message"></p>
+
+        <div id="night-popup" class="popup-overlay">
+                <div class="popup-content">
+                    <h1>Late Night Notice!</h1>
+                    <p>It is past 9:00 PM. Your rabbit is asleep! Please also get some rest! Resume studying at 6.30 AM or later.</p>
+                    <button id="close-popup">Dismiss</button>
+                </div>
+        </div>
+
+    </main>
+    <!--link to javascript-->
+    <script src="Rabbitdata.js"></script>
+    <script src="shop.js"></script>
+
+</body>
+</html>

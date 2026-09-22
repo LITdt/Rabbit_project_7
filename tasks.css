@@ -1,0 +1,496 @@
+/*rabbit should bounce up and down with a shadow*/
+
+*{ /*universal selector - applies to everything.*/
+    box-sizing:border-box; /*include an elements padding in its overall specified w and h.*/
+}
+
+html{
+   font-size: 16px; /*sets the base font size for the page. 1rem = 16px*/ 
+}
+body{
+    margin: 0;
+    padding: 0 5vw; /*adds padding to the left and right of the page. 5% of the viewport width.*/
+    font-family:arial, Hevetica, sans-serif;
+    color: #2D5D7B;
+    background-color: #ECE2D0;
+}
+
+/*nav*/
+.bn-container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:100%;
+    gap: clamp(10px, 3vw, 35px);
+    margin-top:20px;
+    flex-wrap:wrap;
+}
+
+.buttonlink{
+    padding:10px 20px;
+    font-size:clamp(0.9rem, 2vw, 1.3rem);
+    color:#2d5d7b;
+    text-decoration:none; /*removes the underline*/
+    border-radius:20%;
+    text-align:center;
+    font-weight:bold;
+    cursor:pointer; /*This changes the mouse arrow icon to a clicking hand!!*/
+}
+
+#homepage, #timerpage{
+    background-color:#97B497;
+}
+
+#homepage:hover, #timerpage:hover{
+    background-color:#627a62; /*darkens the button on hover*/
+    color:#0d181f;
+}
+
+/*coin display*/
+#coin-count{
+    font-size:clamp(0.9rem, 2vw, 1.3rem);
+    padding:8px 12px;
+    font-weight:bold;
+    white-space:nowrap; /*prevents the text from wrapping to the next line.*/
+}
+
+/*title*/
+#title{
+    text-align:center;
+    font-size:clamp(2rem, 6vw, 3.5rem);
+    margin:25px 0;
+}
+
+/*tasks card*/
+.task-container{
+    background:#ffffff;
+    width:min(100%, 550px);
+    margin:30px auto;
+    padding:clamp(18px, 4vw, 30px);
+    border-radius:12px;
+    box-shadow: 0 8px 24px #0000000d;
+}
+
+/*input area*/
+.input-area{
+    display:flex;
+    gap:10px;
+    width:100%;
+    margin-bottom:20px;
+}
+
+#task-input{
+    flex:1;
+    min-width:0; /*prevents the input from overflowing the container.*/
+    padding:11px;
+    border:2px solid #e0e0e0;
+    border-radius:6px;
+    font-size:clamp(0.9rem, 2vw, 1rem);
+    outline:none;
+}
+
+#task-input:focus{
+    border-color:#97B497;
+}
+
+#add-task-btn{
+    flex-shrink:0; /*prevents the button from shrinking when the container is too small.*/
+    background-color:#97B497;
+    color:#2d5d7b;
+    border:none;
+    padding:11px 15px;
+    border-radius:6px;
+    font-size:clamp(0.85rem, 2.3vw, 1rem);
+    font-weight:bold;
+    cursor:pointer;
+    transition:background-color 0.2s;
+}
+
+#add-task-btn:hover{
+    background-color:#7e947e;
+    color:#294353;
+}
+
+/*instructions*/
+.task-instr{
+    background-color:#f0f0f0;
+    padding:15px;
+    text-align:left;
+    font-size:clamp(0.85rem, 2vw, 1rem);
+    margin-bottom:20px;
+    border-radius:10px;
+}
+
+.task-instr strong{
+    font-size:clamp(1rem, 2.5vw, 1.2rem);
+}
+
+.task-instr p{
+    margin:6px 0;
+}
+
+/*task list*/
+#task-list{
+    list-style:none;
+    padding:0;
+    margin:0;
+    width:100%;
+}
+
+/*individual task items*/
+#task-list li{
+    background-color:#f9f9f9;
+    width:100%;
+    padding:12px;
+    border-radius:6px;
+    margin-bottom:10px;
+    color:#444444;
+    font-size:clamp(0.85rem, 2.2vw, 1rem);
+    border-left:4px solid #4caf50;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+}
+
+/*task text*/
+#task-list li span{
+    flex:1;
+    min-width:0; /*prevents the text from overflowing the container.*/
+    overflow-wrap:anywhere; /*allows the text to break anywhere to prevent overflow.*/
+    text-align:left;
+}
+
+/*task buttons*/
+.task-buttons{
+    display:flex;
+    gap:6px;
+    flex-shrink:0;
+
+}
+
+.task-buttons button{
+    border:none;
+    padding: 7px 9px;
+    border-radius:6px;
+    font-size:clamp(0.7rem, 2vw, 0.9rem);
+    font-weight:bold;
+    cursor:pointer;
+    white-space:nowrap;
+}
+
+.complete-btn{
+    background-color:#97b497;
+    color:#2d5d7b;
+}
+
+.complete-btn:hover{
+    background-color:#627a62;
+}
+
+.delete-btn{
+    background-color:#d46a6a;
+    color:#2d5d7b;
+}
+.delete-btn:hover{
+    background-color:#7a3b3b;
+}
+
+/*rabbit*/
+
+.rabbit-container{
+  /*for positioning*/
+  position:relative;
+  width:230px;
+  height:220px;
+  margin:40px auto 20px;
+  animation: bounce 3s ease-in-out infinite;
+}
+
+/* The overall rabbit body containing all parts */
+.rabbit {
+  width: 120px;
+  height: 160px;
+  margin:auto;
+  position: relative;
+}
+
+@keyframes bounce{
+    0%, 100% { transform: translateY(0);}
+    50%{transform: translateY(20px);}
+}
+
+
+/* Head design */
+.head {
+    width: 110px;
+    height: 85px;
+    background-color: #ffffff;
+    border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%;
+    border: 1px solid transparent;
+    position: absolute;
+    top: 7px;
+    top:7px;
+    left: 5px;
+    z-index: 2;
+    box-shadow: inset -10px -5px 0 #f0f0f0;
+}
+
+/*face*/
+.face{
+    position:absolute;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    z-index:3;
+}
+        
+/* Eyes */
+.eyes {
+    width: 8px;
+    height: 10px;
+    background-color: #333333;
+    border-radius: 75%;
+    position: absolute;
+    top: 32px;
+    left: 10px;
+}
+       
+.eyes.right{
+    box-shadow: 40px 0 0 #333333; /* Creates the second eye */
+}
+/* Cheeks */
+.cheeks {
+     width: 10px;
+    height: 6px;
+    background-color: #f3dcd6;
+    border-radius: 50%;
+    position: absolute;
+    top: 40px;
+    left: 5px;
+    box-shadow: 50px 0 0 #f3dcd6; /* Creates the second cheek */
+}
+
+/*mouth*/
+.mouth {
+    position: relative;
+    width: 20px;
+    height: 12px;
+    top:5px;
+    left:2px;}
+
+.mouth::before,
+.mouth::after {
+    content: "";
+    position: absolute;
+    top: 30px;
+    width: 12px;
+    height: 12px;
+    border-bottom: 2px solid #000; /*helps control the thickness of the mouth*/
+    border-radius: 0 0 20px 20px;
+}
+
+.mouth::before {
+    left: 20px;
+}
+
+.mouth::after {
+    left: 32px;
+}
+
+.tail{
+    width: 23px;
+    height: 23px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    position: absolute;
+    top: 34px; 
+    margin-left:97px;
+    z-index:-1;
+}
+/* Base Ear Class */
+.ear {
+    width: 20px;
+    height: 35px;
+    background-color: #ffffff;
+    border-radius: 70% 70% 90% 90% / 40% 60% 100% 100%;
+    position: absolute;
+    top: -20px;
+    transform-origin: bottom center;
+    box-shadow: inset -3px -6px 0 #f0f0f0;
+    z-index:-1;
+}
+
+/*Inner pink layer for ears*/ 
+.ear::after {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 4px;
+    width: 9px;
+    height: 14px;
+    background-color: #f3dcd6;
+    border-radius: 60% 60% 90% 90% / 40% 60% 100% 100%;
+}
+
+/*separate ear positioning*/
+.ear.left {
+    left: 30px;
+    transform: rotate(-10deg);
+}
+
+.ear.right {
+    right: 44px;
+    transform: rotate(10deg);
+}
+
+
+/* Ground shadow */
+.shadow {
+    width: 100px;
+    height: 15px;
+    background-color: #c7c7ac;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 10px;
+    left:67px;
+    z-index: 1;
+    animation: shadow-scale 3s ease-in-out infinite;
+}
+
+/* Shadow resizing relative to height */
+@keyframes shadow-scale {
+    0%, 100% {
+        transform: scale(0.6);
+        opacity: 0.4;
+    }
+    50% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Full-screen background dim */
+.popup-overlay {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 9999; /* Keeps it on top of everything */
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+/* The actual message box */
+.popup-content {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 400px;
+    width: 80%;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transform: scale(0.7);
+    transition: transform 0.4s ease;
+}
+
+/* Active class applied by JavaScript */
+.popup-overlay.show {
+    display: flex;
+    opacity: 1;
+}
+
+.popup-overlay.show .popup-content {
+    transform: scale(1);
+}
+
+/* Close button styling */
+#close-popup {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #333333;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#close-popup:hover {
+    background-color: #555555;
+}
+
+.popup-content h1{
+  font-size:clamp(1.5rem, 4vw, 2.2rem);
+}
+
+.popup-content p{
+  font-size:clamp(0.9rem, 2vw, 1.1rem);
+}
+
+/*when the happiness is 0, this should appear*/
+#rabbit.sad {
+    filter:grayscale(80%);
+    opacity:0.75;
+}
+
+/*mobile*/
+@media (max-width: 700px){
+    body{
+        padding:0 4vw;
+    }
+
+    .bn-container{
+        gap:8px;
+    }
+
+    .buttonlink{
+        padding:8px 14px;
+    }
+
+    .task-container{
+        margin-top:20px;
+    }
+
+    .input-area{
+        gap:6px;
+    }
+
+    #task-input{
+        width:100%;
+    }
+
+    #add-task-btn{
+        padding:10px;
+    }
+
+    #task-list li{
+        align-items: stretch; /*makes child elements expand to fill their parent container*/
+        flex-direction: column;
+        gap:8px;
+    }
+
+    #task-list li span{
+        width:100%;
+    }
+
+    .task-buttons{
+        width:100%;
+        margin-left:0;
+        display:flex;
+    }
+
+    .task-buttons button{
+        flex:1;
+        padding:8px 5px;
+    }
+
+    .rabbit-container{
+        margin-top:20px;
+    }
+}

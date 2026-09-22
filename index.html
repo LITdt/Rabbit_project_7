@@ -1,0 +1,77 @@
+<!-- This page is the homepage. It should contain:
+ Linked buttons to the instructions, tasks, wardrobe, shop, interact, and timer pages
+ A live happiness meter
+ Coin Count (linked to shop and tasks)
+ Rabbit
+ Customisable names hovering over rabbit with arrow going up and down-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+        <title>Rabbit tool homepage</title>
+
+        <link rel="stylesheet" href="index.css">
+
+    </head>
+    <body>
+        <!--EVERYTHING RABBIT-RELATED BELOW!!-->
+
+        <div class="ahr-container">
+
+            <!--For the name.-->
+            <input type="text" id="username" name="username" placeholder="Enter name!">
+            <div class="clip-arrow"></div><!--link to rabbit container-->
+            <div class="rabbit-container">
+                <!-- The Rabbit Structure -->
+                <div class="rabbit" id = "rabbit">
+
+                    <div class="ear left"></div>
+                    <div class="ear right"></div>
+                    <div class="torso"></div>
+                    <div class="head">
+
+                        <div class="eyes right"></div>
+                        <div class="eyes left"></div>
+                        <div class="nose"></div>
+                        <div class="cheeks"></div>
+                        <div class="sparkle"></div>
+                    </div>
+                    <div class="foot left"></div>
+                    <div class="foot right"></div>
+                </div>
+            </div>
+            <!--happiness-->
+            <div class="happiness">
+                <p>Happiness</p>
+                <div class="happiness-bar">
+                    <div id="happiness-fill" class="happiness-fill"></div>
+                </div>
+                <span id="happiness-number">70%</span>
+            </div>
+        </div>
+
+        <!--COINS + BUTTONS-->
+        <div class="parent-container">
+
+            <span id="coin-count"> $0</span> <!--span keeps it inline instead of interrupting the flow and making a new line (like div)?-->
+            <a href="instructionsv2.html" class="buttonlink" id="instructionspage">Instructions</a>
+            <a href="tasks.html" class="buttonlink" id="taskspage">Tasks</a>
+            <a href="shoppage.html" class="buttonlink" id="shoppage">Shop</a>
+            <a href="interact.html" class="buttonlink" id="interactpage">Interact</a>
+            <a href="timerpage.html" class="buttonlink" id="timerpage">Timer</a>
+        </div>
+
+        <div id="night-popup" class="popup-overlay">
+            <div class="popup-content">
+                <h1>Late Night Notice!</h1>
+                <p>It is past 9:00 PM. Your rabbit is asleep! Please also get some rest! Resume studying at 6.30 AM or later.</p>
+                <button id="close-popup">Dismiss</button>
+            </div>
+        </div>
+        <script src="Rabbitdata.js"></script>
+        <script src="hp.js"></script>
+    </body>
+</html>
+<!-- this is how u link 2 js <script src="script.js></script>"-->

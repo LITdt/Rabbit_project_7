@@ -1,0 +1,509 @@
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  background-color:#ece2d0;
+  color:#2d5d7b;
+  font-family:Arial, Helvetica, sans-serif;
+  text-align:center;
+
+}
+
+/*main page*/
+.work-page{
+  width:90%;
+  max-width:1100px;
+  margin:auto;
+  padding:20px;
+
+}
+
+/*nav*/
+.top-buttons{
+  display:flex;
+  justify-content:space-between;
+}
+
+.top-buttons a{
+  text-decoration:none;
+  color:#2d5d7b;
+  background-color:#97b497;
+  border-radius:20%;
+  padding:8px 18px;
+  font-size:clamp(0.85rem, 1.5vw, 1rem);
+}
+
+.top-buttons a:hover{
+  background-color: #627a62;
+}
+
+/*title*/
+h1{
+  font-size: clamp(2rem, 6vw, 4rem);
+  margin:20px 0 30px;
+}
+
+/*study layout*/
+.study-area{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:100px;
+  margin-top:20px;
+}
+
+/*timer*/
+.timer-container{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+/*circular timer*/
+.timer-circle{
+  width:330px;
+  height:330px;
+  border-radius:50%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background: conic-gradient(#715b62 360deg, #d5b9b2 0deg); /*should create a gradient of the 2 colors*/
+  position:relative;
+  transition: background 0.5s linear;
+}
+
+/*creates the inside of the circle*/
+.timer-circle::before{
+  content:"";
+  position:absolute;
+  width:285px;
+  height:285px;
+  background-color:#f5eedc;
+  border-radius:50%;
+}
+
+/*timer text*/
+.timer-inside{
+  position:relative;
+  z-index:2; /*only applicable if position isn't absolute?*/
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+
+}
+
+#timer{
+  font-size:clamp(3rem, 7vw, 5rem);
+  font-weight:bold;
+}
+
+#timer-label{
+  font-size:clamp(1rem, 2vw, 1.2rem);
+}
+
+/*buttons*/
+.timer-buttons{
+  display: flex;
+  gap:10px;
+  margin-top:25px;
+}
+
+.timer-buttons button{
+  border: 2px solid #2d5d7b;
+  background-color:#97b497;
+  color:#2d5d7b;
+  border-radius:20px;
+  padding:10px 20px;
+  font-size:clamp(0.85rem, 1.5vw, 1rem);
+  cursor:pointer;
+}
+
+.timer-buttons button:hover{
+  transform:scale(1.05);
+  background-color:#627a62;
+}
+
+#pause-btn{
+  background-color:#d5b9b2;
+}
+
+#stop-btn{
+  background-color:#97b497;
+}
+
+/*message*/
+#timer-message{
+  min-height:25px;
+  font-size:clamp(0.9rem, 2vw, 1.1rem);
+
+}
+
+/*rabbit area*/
+.study-rabbit-area{
+  width: 350px;
+  height:350px;
+  display:flex;
+  justify-content:center;
+  align-items:flex-end;
+}
+
+/*desk*/
+.desk{
+  width:300px;
+  height:130px;
+  background-color:#c79b72;
+  border:3px solid #2d5d7b;
+  border-radius: 20px 20px 5px 5px;
+  position:relative;
+}
+
+/*container added to keep things in their spots*/
+.study-rabbit-container{
+  width:300px;
+  height:130px;
+  border:3px transparent;
+  position:relative;
+}
+
+/*rabbit*/
+.rabbit-study{
+  position:absolute;
+  width:180px;
+  height:220px;
+  left:60px;
+  bottom:80px;
+}
+
+/*rabbit head*/
+.rabbit-study .head{
+  width:90px;
+  height:90px;
+  background-color:#ffffff;
+  border-radius:50%;
+  border:1px solid #d8d3d3;
+  position:absolute;
+  left:45px;
+  top:30px;
+  z-index:3;
+  box-shadow:inset -10px -5px 0 #f0f0f0;
+  transform-origin:bottom center;
+  animation: studyHead 5s ease-in-out infinite;
+
+}
+
+/*head tilt (study head)*/
+@keyframes studyHead{
+  0%, 100%{
+    transform: rotate(40deg);
+  }
+
+  20%{
+    transform:rotate(30deg);
+  }
+  50%{
+    transform:rotate(-10deg);
+  }
+
+  80%{
+    transform:rotate(40deg);
+  }
+
+}
+
+/*ears*/
+.rabbit-study .ear{
+  width:40px;
+  height:95px;
+  background-color:#ffffff;
+  border-radius:70% 70% 90% 90%;
+  border: 1px solid #d8d3d3;
+  position:absolute;
+  bottom:75px;
+  z-index:1; /*may not work?*/
+
+
+}
+
+.rabbit-study .ear::after{
+  content:"";
+  position:absolute;
+  top:12px;
+  left:8px;
+  width:20px;
+  height:75px;
+  background-color:#f3dcd6;
+  border-radius:60%;
+    box-shadow:inset -1px -2px 0 0 #d9bfbf;
+
+}
+
+.rabbit-study .ear.left{
+  left:5px;
+  transform:rotate(-25deg);
+  transform-origin:bottom center;
+  box-shadow:inset -10px -5px 0 #f0f0f0; /*inset changes from outer shadow to inner shadow*/
+}
+
+
+
+.rabbit-study .ear.right{
+  right:-10px;
+  transform:rotate(25deg);
+  box-shadow:inset -10px -5px 0 #f0f0f0;
+
+}
+
+/*eyes*/
+.rabbit-study .eyes{
+  width:22px;
+  height:22px;
+  background-color:#333333;
+  border-radius:50%;
+  position:absolute;
+  top:25px;
+  left:15px;
+  box-shadow: 38px 0 #333333;
+}
+
+/*eye sparkles*/
+.rabbit-study .eyes::after{
+  content:"";
+  position: absolute;
+  background-color: white;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  left: 4px;
+  top: 5px;
+  box-shadow: 40px 0 0 white; /*creates 2nd sparkle.*/
+}
+
+/*nose*/
+.rabbit-study .nose{
+  width:12px;
+  height:8px;
+  background-color:#f3dcd6;
+  border-radius:50%;
+  position:absolute;
+  left:39px;
+  top:58px;
+  box-shadow:inset -1px -2px 0 0 #d9bfbf;
+}
+
+/*cheeks*/
+.rabbit-study .cheeks{
+  width:13px;
+  height:9px;
+  background-color:#f3dcd6;
+  border-radius:50%;
+  position:absolute;
+  left:7px;
+  top:50px;
+  box-shadow: 62px 0 #f3dcd6;
+}
+
+/*body*/
+.rabbit-study .body{
+  width:120px;
+  height:100px;
+  background-color:#ffffff;
+  border-radius:50%;
+  border: 1px solid #d8d3d3;
+  position:absolute;
+  left:35px;
+  top:100px;
+  box-shadow: inset -10px -5px 0 #f0f0f0;
+}
+
+.rabbit-study .body::after{
+  content:"";
+  position:absolute;
+  width:80px;
+  height:50px;
+  background-color:#f3dcd6;
+  border-radius:50%;
+  left:15px;
+  bottom:5px;
+}
+
+/*arms*/
+.rabbit-study .arm{
+  width:73px;
+  height:35px;
+  background-color:#ffffff;
+  border-radius:50%;
+  position:absolute;
+  top: 130px;
+  z-index: 4;
+  border:1px solid #d8d3c3;
+  box-shadow:inset -10px -5px 0 #f0f0f0;
+
+
+}
+
+.rabbit-study .arm.left{
+  left:15px;
+  top:155px;
+  transform:rotate(75deg);
+}
+
+.rabbit-study .arm.right{
+  right:2px;
+  transform:rotate(-60deg);
+
+}
+
+/*book*/
+.book{
+  position:absolute;
+  z-index:5;
+  left:100px;
+  top:10px;
+  font-size:4rem;
+  transform:rotate(-5deg);
+}
+
+/*rewards*/
+.reward-box{
+  margin:40px auto 0;
+  max-width:600px;
+  padding:15px;
+  border:2px solid #2d5d7b;
+  border-radius:20px;
+  background-color:#f5eedc;
+  font-size:clamp(0.9rem, 2vw, 1.1rem);
+}
+
+.reward-box strong{ /*links to strong*/
+  display:inline-block;
+  margin:5px 15px;
+  font-size:clamp(1rem, 2vw, 1.2rem);
+}
+
+/* Full-screen background dim */
+.popup-overlay {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 9999; /* Keeps it on top of everything */
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+/* The actual message box */
+.popup-content {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 400px;
+    width: 80%;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transform: scale(0.7);
+    transition: transform 0.4s ease;
+}
+
+/* Active class applied by JavaScript */
+.popup-overlay.show {
+    display: flex;
+    opacity: 1;
+}
+
+.popup-overlay.show .popup-content {
+    transform: scale(1);
+}
+
+/* Close button styling */
+#close-popup {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #333333;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#close-popup:hover {
+    background-color: #555555;
+}
+
+.popup-content h1{
+  font-size:clamp(1.5rem, 4vw, 2.2rem);
+}
+
+.popup-content p{
+  font-size:clamp(0.9rem, 2vw, 1.1rem);
+}
+
+/*when the happiness is 0, this should appear*/
+.rabbit-study.sad {
+    filter:grayscale(80%);
+    opacity:0.75;
+}
+
+/*mobile*/
+@media (max-width:700px){
+  .work-page{
+    padding:10px;
+  }
+
+  h1{
+    margin:10px 0 15px;
+  }
+
+  .study-area{
+    flex-direction:column;
+    gap:30px;
+    margin-top:5px;
+  }
+
+  .timer-circle{
+    width:210px;
+    height:210px;
+  }
+
+  .timer-circle::before{
+    width:180px;
+    height:180px;
+  }
+
+
+  .timer-buttons{
+    margin-top:10px;
+  }
+
+  .timer-buttons button{
+    padding:7px 14px;
+  }
+
+  #timer-message{
+    margin:8px 0;
+  }
+
+  .study-rabbit-area{
+    width:300px;
+    height:350px;
+    display:flex;
+    justify-content:center;
+    align-items:flex-end;
+    margin-top:10px;
+  }
+
+  .reward-box{
+    margin-top:5px; 
+    padding:10px;
+  }
+
+  .reward-box strong{
+    margin:3px 8px;
+  }
+}

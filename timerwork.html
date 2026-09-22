@@ -1,0 +1,92 @@
+<!--This section is the timer (working) section - it should contian a 
+working pomodoro timer, an idle animation, and buttons
+for start, end, and pause. -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Pomodoro Timer</title>
+
+        <link rel="stylesheet" href="timerwork.css">
+    </head>
+
+    <body>
+        <main class="work-page">
+            <!--top navigation-->
+            <div class="top-buttons">
+                <a href="index.html">Home</a>
+                <a href="timerpage.html">Back</a>
+            </div>
+
+            <h1> ~ Study Time ~</h1>
+
+            <!--main timer area-->
+            <div class="study-area">
+
+                <!--circular timer-->
+                <div class="timer-container">
+                    <div class="timer-circle" id="timer-circle">
+                        <div class="timer-inside">
+                            <span id="timer">50:00</span>
+                            <small id="timer-label">Study</small>
+                        </div>
+                    </div>
+
+                    <!--timer buttons-->
+                    <div class="timer-buttons">
+                        <button id="start-btn">▶</button>
+                        <button id="pause-btn">⏸</button>
+                        <button id="stop-btn">■</button>
+                    </div>
+
+                    <p id="timer-message">Ready to study?</p>
+                </div>
+
+                <!--studying rabbit- a rabbit sitting at a desk hopefully!-->
+                <div class="study-rabbit-area">
+                    <div class="study-rabbit-container">
+                        <div class="rabbit-study">
+                            <div class="head"> <!--linking ears to head animation?-->
+                                <div class="ear left"></div>
+                                <div class="ear right"></div>
+                            </div>
+                            <div class="head">
+                                <div class="eyes"></div>
+                                <div class="nose"></div>
+                                <div class="cheeks"></div>
+                            </div>
+
+                            <div class="body"></div>
+                            <div class="arm left"></div>
+                            <div class="arm right"></div>
+                        </div>
+                        <div class="desk"></div>
+                        <!--book-->
+                        <div class="book">📖</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!--rewards-->
+            <div class="reward-box">
+                <p> Complete your study session to earn:</p>
+                <strong id="coin-reward">🪙 0 coins</strong>
+                <strong id="happiness-reward">❤️ +0 happiness</strong>
+            </div>
+
+            <div id="night-popup" class="popup-overlay">
+                <div class="popup-content">
+                    <h1>Late Night Notice!</h1>
+                    <p>It is past 9:00 PM. Your rabbit is asleep! Please also get some rest! Resume studying at 6.30 AM or later.</p>
+                    <button id="close-popup">Dismiss</button>
+                </div>
+            </div>
+        </main>
+
+        <!--link to work js-->
+        <script src="Rabbitdata.js"></script>
+        <script src="timerwork.js"></script>
+    </body>
+</html>

@@ -1,0 +1,492 @@
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    background-color: #ECE2D0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #2D5D7B;
+
+    display:flex;
+    align-items:flex-start;
+    justify-content: center;
+    gap:clamp(50px, 12vw, 220px);
+    padding:40px;
+    min-height:100vh;
+}
+
+
+.parent-container{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    gap:16px;
+    width:200px;
+    flex-shrink:0;
+    text-align: center;
+    font-size: clamp(1em, 2vw, 2em);
+    
+}
+.ahr-container{ 
+    /*this links together rabbit name, rabbit, arrow, and happiness meter so they can line up*/
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    gap: 15px;
+    width: 300px;
+    flex-shrink:0;
+}
+
+    
+.buttonlink {
+  display: block; /*Horizontally next to other elements take up full available space*/
+  width:180px;
+  box-sizing: border-box; /* Ensures padding doesn't affect the width */
+  padding: 10px 20px;
+  color: #2D5D7B;
+  text-decoration: none; /* Removes the underline */
+  border-radius: 20%;
+  text-align: center;
+  font-weight: bold;
+  font-size: clamp(0.8em, 2vw, 2em);
+  overflow: hidden;
+
+}
+
+.buttonlink:hover {
+  background-color: #627a62; /* Darkens the button on hover, ANALOGOUS */
+}
+
+#coin-count{
+    text-align: right; 
+    font-size: clamp(0.9em, 2.5vw, 2em);
+}
+
+
+#instructionspage, #shoppage, #timerpage{
+    background-color: #97B497;
+}
+
+#taskspage, #interactpage{
+    background-color: #715B64;
+    color:#D5B9B2;
+}
+
+/*isn't shrinkable . growable*/
+.clip-arrow {
+    width: 60px;
+    height: 100px;
+    flex-shrink: 0; /* Prevents the arrow from shrinking */
+    background-color: #2D5B7C;
+    border-radius: 70%; /*Rounds the flat end of the arrow.*/
+    border: 5px solid #ECE2D0;
+
+    /*applying idle animation*/
+    animation: idlebreath 3s ease-in-out infinite;
+    transform-origin: bottom center;
+
+    /* Coordinates map the points of the arrow shape */
+    clip-path: polygon(    25% 0%,    /* Top left of shaft */
+        75% 0%,    /* Top right of shaft */
+        75% 50%,   /* Right side intersection */
+        102% 49%,  /* Right outer wing */
+        50% 100%,  /* Bottom pointing tip */
+        -2% 50%,    /* Left outer wing */
+        25% 50%    /* Left side intersection */);
+        }
+
+    /*define idle looping*/
+    @keyframes idlebreath{
+        0%{
+            transform:translateY(0) scaleY(1) scaleX(1);
+        }
+        50%{
+            /*moves up slightly and stretches*/
+            transform: translateY(-12px) scaleY(1.05) scaleX(0.98);
+        }
+        100%{
+            /*return to original place*/
+            transform:translateY(0) scaleY(1) scaleX(1);
+        }
+    }
+
+
+#username{ /*The text isn't affected by color? Why.*/
+    width:120px;
+    height:30px;
+    border: none;
+    border-radius:20%;
+    background-color:#ecc7be;
+    text-align: center;
+    font-size:16px;
+    color:#2D5D7B;
+    flex-shrink:0;
+
+}
+
+.rabbit-container{
+    position:relative;
+    width:300px;
+    height:250px;
+    flex-shrink:0;
+}
+
+.happiness{
+    width:80%;
+    max-width:500px;
+    margin:20px auto;
+}
+
+.happiness p{
+    margin:5px;
+}
+
+/*bar*/
+.happiness-bar{
+    width:100%;
+    height:22px;
+    border:2px solid #2d5d7b;
+    border-radius:20px;
+    overflow:hidden;
+    background-color:white;
+}
+
+/*filled section*/
+.happiness-fill{
+    width:70%;
+    height:100%;
+    background-color: #a8c686;
+    border-radius:20px;
+    transition:width 0.4s;
+}
+
+#happiness-number{
+    display:block;
+    margin-top:5px;
+    font-weight:bold;
+}
+
+/* Base page layout */
+
+        /* The overall rabbit body containing all parts */
+        .rabbit {
+            position:absolute;
+            left:0;
+            top:40px;
+            width: 120px;
+            height: 160px;
+            transform: scale(1);
+            transform-origin: bottom left;
+        }
+
+        /* Head design */
+        .head {
+            width: 100px;
+            height: 100px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            border: 1px solid rgb(216, 211, 211);
+            position: absolute;
+            top: -2px;
+            left: 105px;
+            z-index: 2;
+            box-shadow: inset -10px -5px 0 #f0f0f0;        }
+
+        .torso{
+            width: 135px;
+            height: 120px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            border: 1px solid rgb(216, 211, 211);
+            position: absolute;
+            top: 80px;
+            left: 88px;
+            z-index: 0;
+            box-shadow: inset -10px -5px 0 #f0f0f0;
+        }
+
+        /*inner torso - pink */
+        .torso::after{
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 20px;
+            width: 90px;
+            height: 60px;
+            background-color: #f3dcd6;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            border: 1px solid #dac3bd;
+        }
+        /* Eyes */
+        .eyes {
+            width: 25px;
+            height: 25px;
+            background-color: #333333;
+            border-radius: 50%;
+            position: absolute;
+            top: 31px;
+            left: 17px;
+            box-shadow: 40px 0 0 #333333; /* Creates the second eye */
+        }
+
+        
+        /*inner sparkle*/
+        /*Note! COULD ANIMATE SPARKLE SO IT LIKE GOES IN A CIRCLE AND THE EYES GET LARGE?*/
+        .eyes::after{
+            content:"";
+            position: absolute;
+            background-color: white;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            left: 4px;
+            top: 5px;
+            box-shadow: 40px 0 0 white; /*creates 2nd sparkle.*/
+        }
+
+        
+        
+        /*where is this?*/
+        .sparkle{
+            background-color: white;
+            width: 5px;
+            height: 10px;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+        }
+
+        /*Animation for the eyes to grow and the sparkle to go in a circle? - should go somewhere else. Too much movement is distracting*/
+
+        /* Nose */
+        .nose {
+            width: 12px;
+            height: 8px;
+            background-color: #f3dcd6; /*analogous*/
+            border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+            position: absolute;
+            top: 55px;
+            left: 44px;
+            box-shadow: inset -1px -2px 0 #d9bfbf; /* Creates a subtle inner shadow for depth */
+        }
+
+        /* Cheeks */
+        .cheeks {
+            width: 14px;
+            height: 10px;
+            background-color: #f3dcd6;
+            border-radius: 50%;
+            position: absolute;
+            top: 55px;
+            left: 12px;
+            box-shadow: 62px 0 0 #f3dcd6; /* Creates the second cheek */
+        }
+
+        /* Base Ear Class */
+        .ear {
+            width: 30px;
+            height: 85px;
+            background-color: #ffffff;
+            border-radius: 70% 70% 90% 90% / 40% 60% 100% 100%;
+            border: 1px solid rgb(216, 211, 211);
+            position: absolute;
+            top: -75px;
+            transform-origin: bottom center;
+            box-shadow: inset -3px -6px 0 #f0f0f0;
+        }
+
+        /* Inner pink layer for ears */
+        .ear::after {
+            content: '';
+            position: absolute;
+            top: 14px;
+            left: 8px;
+            width: 11px;
+            height: 65px;
+            background-color: #f3dcd6;
+            border-radius: 60% 60% 90% 90% / 40% 60% 100% 100%;
+            border: 1px solid rgb(216, 211, 211);
+            box-shadow: inset -1px -5px 0 #dfc9c3f3;
+        }
+
+        /* Left ear positioning and twitch animation */
+        .ear.left {
+            left: 120px;
+            transform: rotate(-10deg);
+            animation: twitch-left 2s ease-in-out infinite;
+        }
+
+        /* Right ear positioning and twitch animation */
+        .ear.right {
+            right: -70px;
+            transform: rotate(10deg);
+            animation: twitch-right 2s ease-in-out infinite;
+        }
+
+        .foot{
+            width: 50px;
+            height: 30px;
+            background-color: #ffffff;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            border: 1px solid rgb(216, 211, 211);
+            position: absolute;
+            top: -70px;
+            transform-origin: bottom center;
+            box-shadow: inset -10px -5px 0 #f0f0f0;
+        }
+        .foot.left{
+            top: 180px;
+            right: -23px;
+        }
+        .foot.right{
+            top: 180px;
+            left: 165px;
+        }
+
+
+        /* Left ear wiggle */
+        @keyframes twitch-left {
+            0%, 90%, 100% { transform: rotate(-10deg); }
+            95% { transform: rotate(-18deg); }
+        }
+
+        /* Right ear wiggle */
+        @keyframes twitch-right {
+            0%, 85%, 100% { transform: rotate(10deg); }
+            92% { transform: rotate(22deg); }
+        }
+
+
+/* Full-screen background dim */
+.popup-overlay {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 9999; /* Keeps it on top of everything */
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+/* The actual message box */
+.popup-content {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 400px;
+    width: 80%;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transform: scale(0.7);
+    transition: transform 0.4s ease;
+}
+
+/* Active class applied by JavaScript */
+.popup-overlay.show {
+    display: flex;
+    opacity: 1;
+}
+
+.popup-overlay.show .popup-content {
+    transform: scale(1);
+}
+
+/* Close button styling */
+#close-popup {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #333333;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#close-popup:hover {
+    background-color: #555555;
+}
+
+.popup-content h1{
+  font-size:clamp(1.5rem, 4vw, 2.2rem);
+}
+
+.popup-content p{
+  font-size:clamp(0.9rem, 2vw, 1.1rem);
+}
+
+/*when the happiness is 0, this should appear*/
+#rabbit.sad {
+    filter:grayscale(80%);
+    opacity:0.75;
+}
+
+/*mobile*/
+@media (max-width:700px){
+    body {
+        flex-direction:column;
+        align-items:center;
+        justify-content:flex-start;
+        gap:15px;
+        padding:10px;
+    }
+
+    .parent-container{
+        /*coins appear 1st*/
+        order:1;
+        width:100%;
+        max-width:200px;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        gap:10px;
+    }
+
+    /*rabbit + name + happiness*/
+    .ahr-container{
+        order:2;
+        width:100%;
+        max-width:300px;
+
+    }
+
+    #coin-count{
+        font-size:clamp(0.9rem, 2.5vw, 1.2rem);
+        white-space:nowrap;
+    }
+
+    .rabbit-container{
+        transform:scale(0.8);
+        transform-origin:top center;
+        height:210px;
+    }
+
+    .happiness-meter{
+        width:90%;
+        max-width:300px;
+
+    }
+
+    .buttonlink{
+        width:150px;
+        padding:7px 10px;
+        font-size:0.9rem;
+    }
+
+
+    #username{
+        width:140px;
+
+    }
+
+    .clip-arrow{
+        width:45px;
+        height:75px;
+    }
+}
+    
